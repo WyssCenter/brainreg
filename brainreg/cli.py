@@ -197,6 +197,10 @@ def main():
 
     args, additional_images_downsample = prep_registration(args)
 
+    if args.brain_geometry not in ['full', 'hemisphere_r', 'hemisphere_l']:
+        raise ValueError('Error: unknown brain geometry \"{}\", check documentation for '
+                         'supported brain geometries.'.format(args.brain_geometry))
+
     paths = Paths(args.brainreg_directory)
 
     log_metadata(paths.metadata_path, args)
